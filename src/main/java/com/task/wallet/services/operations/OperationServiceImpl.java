@@ -69,6 +69,7 @@ public class OperationServiceImpl implements OperationService {
         }
         wallet.setBalance(wallet.getBalance().subtract(amount));
         walletRepository.save(wallet);
+        walletRepository.flush();
         log.debug("Withdraw is completed successfully for user's id: {}", wallet.getId());
         return buildSuccessResponse(OperationType.WITHDRAW, amount);
     }
@@ -80,6 +81,7 @@ public class OperationServiceImpl implements OperationService {
     private OperationResponse deposit(Wallet wallet, BigDecimal amount) {
         wallet.setBalance(wallet.getBalance().add(amount));
         walletRepository.save(wallet);
+        walletRepository.flush();
         log.debug("Deposit is completed successfully for user's id: {}", wallet.getId());
         return buildSuccessResponse(OperationType.DEPOSIT, amount);
     }
