@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class GlobalHandlerException {
+public class HandlerGlobalException {
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleJsonErrors(HttpMessageNotReadableException ex) {
         return new ResponseEntity<>(new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Malformed JSON request"), HttpStatus.BAD_REQUEST);
