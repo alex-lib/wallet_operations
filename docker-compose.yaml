@@ -33,9 +33,6 @@ services:
       - wallet-network
     restart: unless-stopped
 
-volumes:
-  postgres_data:
-
 networks:
   wallet-network:
     driver: bridge
